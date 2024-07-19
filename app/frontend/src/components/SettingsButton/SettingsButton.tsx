@@ -11,9 +11,7 @@ interface Props {
 export const SettingsButton = ({ className, onClick }: Props) => {
     return (
         <div className={`${styles.container} ${className ?? ""}`}>
-            <Button icon={<Settings24Regular />} disabled={true}>
-                {"Developer settings"}
-            </Button>
+            <Button icon={<Settings24Regular />}> </Button>
         </div>
     );
 };
