@@ -5,9 +5,9 @@ import styles from "./Example.module.css";
 const DEFAULT_EXAMPLES: string[] = ["What are the IT policies of SESA goa?", "Give me a brief idea of what is blast furnace?"];
 const EXAMPLES: string[][] = [
     ["What are the IT policies of SESA goa?", "what are the allowed usage of company laptop?", "what are the classification of data privacy level?"],
-    ["How many leaves I am entitled to?", "How to apply for reimbersment?", "How many holidays do we get"],
-    ["How risk assessment is done?", "Give me a brief idea of what is blast furnace?"],
-    ["How apply for medical reimbersment", "Is cashless feature available in mediclaim", "how much is the cover for dental operations"]
+    ["How many leaves I am entitled to?", "How to apply for leaves?", "How much VPF contribution I can do"],
+    ["Process of making PIG iron", "Give me a brief idea of what is blast furnace?",],
+    ["How apply for medical reimbersment", "Is cashless feature available in mediclaim", "What is my sum insured my grade is m7","How to find cashless hospitals"]
 ];
 
 const GPT4V_EXAMPLES: string[] = [];
