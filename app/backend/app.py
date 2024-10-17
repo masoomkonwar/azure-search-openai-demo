@@ -34,6 +34,7 @@ from opentelemetry.instrumentation.openai import OpenAIInstrumentor
 from quart import (
     Blueprint,
     Quart,
+    Response,
     abort,
     current_app,
     jsonify,
@@ -90,10 +91,21 @@ bp = Blueprint("routes", __name__, static_folder="static")
 mimetypes.add_type("application/javascript", ".js")
 mimetypes.add_type("text/css", ".css")
 
+@bp.after_request
+async def remove_server_header(response: Response):
+    response.headers['Server'] = ''
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY' 
+    response.headers['X-XSS-Protection'] = '1; mode=block'
+    #response.headers['Content-Security-Policy'] = "default-src 'self'; style-src 'self' 'nonce-randomString'"
+    return response
 
 @bp.route("/")
 async def index():
-    return await bp.send_static_file("index.html")
+    
+    response = await bp.send_static_file("index.html")
+    #response.set_cookie('example_cookie', 'cookie_value', samesite='Strict')
+    return response
 
 
 # Empty page is recommended for login redirect to work.
